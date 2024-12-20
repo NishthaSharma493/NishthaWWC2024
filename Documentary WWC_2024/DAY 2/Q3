@@ -1,1 +1,41 @@
+#include <iostream>
+#include <vector>
 
+int removeDuplicates(std::vector<int>& nums) {
+    if (nums.empty()) return 0; // If the array is empty, return 0
+
+    int uniqueIndex = 1; // Start from the second element
+
+    // Iterate through the array starting from the second element
+    for (int i = 1; i < nums.size(); ++i) {
+        // If the current element is different from the previous one
+        if (nums[i] != nums[i - 1]) {
+            nums[uniqueIndex] = nums[i]; // Update the unique index position
+            uniqueIndex++; // Move to the next unique index
+        }
+    }
+    
+    return uniqueIndex; // Return the count of unique elements
+}
+
+int main() {
+    std::vector<int> nums = {1, 1, 2, 2, 3, 4, 4, 5}; // Example input
+    int uniqueCount = removeDuplicates(nums);
+    
+    std::cout << "Number of unique elements: " << uniqueCount << std::endl;
+    std::cout << "Array after removing duplicates: ";
+    
+    // Print the unique elements
+    for (int i = 0; i < uniqueCount; ++i) {
+        std::cout << nums[i] << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+
+
+OUTPUT :
+
+Number of unique elements: 5
+Array after removing duplicates: 1 2 3 4 5 
