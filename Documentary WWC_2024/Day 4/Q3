@@ -18,7 +18,7 @@ int partition(vector<int>& arr, int low, int high) {
     int pivot = arr[high];
     int i = low - 1;
     for (int j = low; j < high; j++) {
-        if (arr[j] < pivot) {
+        if (arr[j] > pivot) { // Descending order for trending content
             i++;
             swap(arr[i], arr[j]);
         }
@@ -36,18 +36,18 @@ void quickSort(vector<int>& arr, int low, int high) {
 }
 
 int main() {
-    vector<int> timestamps = {1612325, 1612295, 1612400, 1612380, 1612330}; // Unsorted timestamps
+    vector<int> scores = {85, 95, 75, 90, 80}; // Unsorted combined scores of popularity + recency
 
-    cout << "Unsorted Timestamps: ";
-    for (int time : timestamps)
-        cout << time << " ";
+    cout << "Unsorted Scores: ";
+    for (int score : scores)
+        cout << score << " ";
     cout << endl;
 
-    quickSort(timestamps, 0, timestamps.size() - 1);
+    quickSort(scores, 0, scores.size() - 1);
 
-    cout << "Sorted Timestamps: ";
-    for (int time : timestamps)
-        cout << time << " ";
+    cout << "Sorted Scores: ";
+    for (int score : scores)
+        cout << score << " ";
     cout << endl;
 
     return 0;
@@ -56,8 +56,8 @@ int main() {
 
 OUTPUT :
 
-Unsorted Timestamps: 1612325 1612295 1612400 1612380 1612330 
-Sorted Timestamps: 1612295 1612325 1612330 1612380 1612400 //using quick sort
+Unsorted Scores: 85 95 75 90 80 
+Sorted Scores: 95 90 85 80 75 //USING QUICKSORT
 
 
 === Code Execution Successful ===
